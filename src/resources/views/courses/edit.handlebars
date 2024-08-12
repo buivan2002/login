@@ -1,0 +1,19 @@
+<div class="mt-4">
+    <h3>SỬA NHẠC</h3>
+    <form method="POST" action="/courses/{{course._id}}?_method=PUT">
+        <div class="form-group">
+            <label for="name">MUSIC NAME</label>
+            <input type="text" class="form-control" value="{{course.name}}"id="name" name="name">
+        </div>
+            <div class="form-group">
+            <label for="decription">Mô Tả</label>
+            <input type="text" class="form-control" value="{{course.decription}}"id="decription" name="decription">
+        </div>
+        <div class="form-group">
+            <label for="videoid">LINK MUSIC</label>
+            <input type="text" class="form-control" value="{{course.videoid}}"id="videoid" name="videoid">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">REPLACE MUSIC</button>
+    </form>
+</div>

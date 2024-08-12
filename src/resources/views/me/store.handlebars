@@ -1,0 +1,70 @@
+<div class="mt-4">
+    <h3>
+        LIST NHẠC
+    </h3>
+
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">TÊN</th>
+      <th scope="col">MÔ TẢ</th>
+      <th scope="col">LINK</th>
+      <th scope="col"></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each courses}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.decription}}</td>
+      <td>{{this.videoid}}</td>
+        <td>
+            <a href="/courses/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+            <a href="" class="btn btn-link" data-toggle="modal" data-id="{{this._id}}" data-target="#exampleModal">Xóa</a>
+
+         </td>
+    </tr>
+    
+    {{/each}}
+      </tbody>
+</table>
+</div>
+
+<div id="exampleModal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="delete-btn" class="btn btn-primary">Xóa bỏ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form name="delete-form" method="POST"></form>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+    var couresid ;
+    var deleteform = document.forms['delete-form']
+    $('#exampleModal').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) 
+    couresid = button.data('id') 
+    })
+
+    var btnDelete = document.getElementById('delete-btn')
+    btnDelete.onclick = function() {
+        deleteform.action = '/courses/' + couresid + '?_method=DELETE'
+        deleteform.submit()
+    }
+})
+</script>

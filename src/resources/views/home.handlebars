@@ -1,0 +1,20 @@
+<div class="mt4">
+    <div class="row justify-content-center">
+
+        {{#each course }}
+        <div class="col-sm-6 col-lg-4">
+            <div class="card" style="width: 18rem; margin:10px 5px;">
+                <a href="/courses/{{this.slug}}">
+                
+                    <img src="{{this.img}}" class="card-img-top" alt="...">
+                </a>
+            <div class="card-body">
+                <h5 class="card-title" >{{this.name}}</h5>
+                <p class="card-text"style="max-height = 10px"> {{this.decription}}</p>
+                <a href="#" class="btn btn-primary">!!!</a>
+            </div>    
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

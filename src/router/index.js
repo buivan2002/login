@@ -12,7 +12,7 @@ function route (app){
     app.use('/courses', coursesRoutes)
     app.use('/login',loginRoutes)
     app.use('/',siteRoutes)
-    
+
 }
 
 

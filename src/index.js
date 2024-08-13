@@ -4,6 +4,7 @@ const path = require('path')
 const app = express()
 const bcrypt = require ("bcrypt")
 const methodOverride = require('method-override')
+const cors = require('cors');
 
 const { engine } = require("express-handlebars");
 const port = 3000
@@ -25,6 +26,7 @@ app.use(urlencoded({
 app.use(express.static(path.join(__dirname, 'resources/public')))
 app.use(methodOverride('_method'))
 app.use(express.json())
+app.use(cors())
 
 route(app)
 

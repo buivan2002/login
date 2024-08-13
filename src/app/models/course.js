@@ -11,18 +11,7 @@ const Courses = new Schema({
   slug:{type:String,slug:"name"},
  
 });
-const LoginSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,   
-    required: true
-  },
-});
 
 const Course = mongoose.model('Course', Courses);
-const collection = mongoose.model('users', LoginSchema);
 
-module.exports = { Course, collection };
+module.exports = { Course };

@@ -3,6 +3,7 @@ const siteRoutes = require ('../router/site')
 const coursesRoutes = require ('./courses')
 const meRoutes = require ('../router/me')
 const loginRoutes = require ('../router/loginRoutes')
+const vjpRoutes = require ('../router/vjpRoutes')
 const jwt = require('jsonwebtoken');
 
 var check = (req, res, next) => {
@@ -26,6 +27,7 @@ function route (app){
     app.use('/me',meRoutes)
     app.use('/new',newRoutes)
     app.use('/courses', coursesRoutes)
+    app.use('/vjp', vjpRoutes)
     app.use('/',siteRoutes)
 
 }

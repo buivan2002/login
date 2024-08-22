@@ -1,0 +1,25 @@
+<div class="mt-4">
+ 
+  <form id="myForm" method="POST" >
+        <div class="form-group">
+            <label for="_id">Nhập ID</label>
+            <input type="text" class="form-control"  id="_id" name="_id" oninput="updateFormAction()"> 
+        </div>
+         <div class="form-group">
+            <label for="exampleFormControlSelect1">Select</label>
+            <select name="role" class="form-control" id="exampleFormControlSelect1">
+            <option value="VJP">VJP</option>
+            <option value="USER">USER</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">SỬA</button>
+
+  </form>
+</div>
+ <script>
+        function updateFormAction() {
+            const idInput = document.getElementById('_id');
+            const form = document.getElementById('myForm');
+            form.action = `/me/${idInput.value}?_method=PATCH`;
+        }
+    </script>

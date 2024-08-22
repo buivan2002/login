@@ -30,7 +30,8 @@ class auth{
         
         const data = {
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            role: 'user'
         }
         const userExists = await collection.findOne({username: req.body.username}) 
         if (userExists){

@@ -2,18 +2,18 @@ const express = require ('express')
 const router =  express.Router()
 const { Course, collection } = require ('../app/models/user') 
 const {mongooseToObject} = require ('../util/mongoose')
-const meControllers = require('../app/controllers/mecontrollers');
+const vjpController = require('../app/controllers/vjpControllers');
 const jwt = require('jsonwebtoken');
 
 
-const isAdmin = async (req, res, next) => {
+const isVjp = async (req, res, next) => {
     var token = req.cookies.token
     var id = jwt.verify(token,'mk')
     collection.find({_id:id})
     .then(data =>{
         console.log('ID',data)
         req.data = data[0]
-        if(req.data.role==='admin')
+        if(req.data.role==='admin'|| req.data.role==='VJP')
         next()
     else
         return res.redirect('/')
@@ -25,9 +25,7 @@ const isAdmin = async (req, res, next) => {
 }
 
 
-router.get('/store/courses',isAdmin, meControllers.store)
-router.get('/Role',isAdmin, meControllers.Role)
-router.patch('/:id',isAdmin, meControllers.RolePatch)
+router.get('/',isVjp, vjpController.index)
 
 
 module.exports = router;

@@ -11,6 +11,12 @@ class auth{
         )
         .catch(next)
     }
+    logout(req,res,next){
+        res.cookie('token', '', {
+            
+            maxAge: 1 
+          });
+        res.redirect('/login')}
     
     signup(req,res,next){
         Course.find({})
@@ -50,7 +56,7 @@ class auth{
             }else {
             const isMatch = await bcrypt.compare(req.body.password , check.password)
             if (isMatch){
-                var token = jwt.sign({ _id: check._id }, 'mk')
+                const token = jwt.sign({ _id: check._id }, 'mk')
                 console.log('token',token)
                 res.cookie('token', token, {
                     httpOnly: true,
@@ -59,6 +65,8 @@ class auth{
                   });
                   return res.redirect('/')
                 }
+                return { check };
+
             }}
         
         catch(error){

@@ -25,7 +25,7 @@ const isVjp = async (req, res, next) => {
 }
 
 
-router.get('/',isVjp, vjpController.index)
+router.get('/', vjpController.index)
 
 
 module.exports = router;

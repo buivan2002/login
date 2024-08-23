@@ -1,20 +1,44 @@
-<div class="mt4">
-    <div class="row justify-content-center">
-
-        {{#each course }}
-        <div class="col-sm-6 col-lg-4">
-            <div class="card" style="width: 18rem; margin:10px 5px;">
-                <a href="/courses/{{this.slug}}">
-                
-                    <img src="{{this.img}}" class="card-img-top" alt="...">
-                </a>
-            <div class="card-body">
-                <h5 class="card-title" >{{this.name}}</h5>
-                <p class="card-text"style="max-height = 10px"> {{this.decription}}</p>
-                <a href="#" class="btn btn-primary">!!!</a>
-            </div>    
-            </div>
-        </div>
-        {{/each}}
-    </div>
+<div class="background-image" >
+  <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fporticoandbridge.com%2Fthan-thoai-hy-lap-kham-pha-nhung-cau-chuyen-co-xua-da-tao-nen-dat-nuoc%2F&psig=AOvVaw2A6Fn5U-qL0aT-P_Q-hWXA&ust=1724464573027000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiekqOBiogDFQAAAAAdAAAAABAE" alt="Background image">
+  Nội dung
 </div>
+<style>
+  .background-image {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fporticoandbridge.com%2Fthan-thoai-hy-lap-kham-pha-nhung-cau-chuyen-co-xua-da-tao-nen-dat-nuoc%2F&psig=AOvVaw2A6Fn5U-qL0aT-P_Q-hWXA&ust=1724464573027000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiekqOBiogDFQAAAAAdAAAAABAE');
+    background-size: cover;
+    background-position: center;
+  }
+</style>
+<div class="mt4">
+  <div class="row justify-content-center">
+    {{#each courses }}
+    <div class="col-sm-6 col-lg-4">
+      <div class="card" style="width: 18rem; margin:10px 5px;">
+        <a class="check" href="/courses/{{this.slug}}" onclick="return checkAccess('{{this.MusicRole}}');">
+          <img src="{{this.img}}" class="card-img-top" alt="...">
+        </a>
+        <div class="card-body">
+          <h5 class="card-title" >{{this.name}}</h5>
+          <p class="card-text"style="max-height = 10px"> {{this.decription}}</p>
+          <a href="#" class="btn btn-primary">{{this.MusicRole}}</a>
+        </div>    
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
+
+<script>
+{{#collections}}
+  var currentUserRole = "{{role}}";
+{{/collections}}currentUserRole.onclick = function (musicRole){
+    
+}
+  function checkAccess(musicRole) {   
+    if (musicRole === "vjp" && currentUserRole == "USER") {
+      alert('Chỉ dành cho người dùng VJP');
+      return false;
+    }
+    return true;
+  }
+</script>

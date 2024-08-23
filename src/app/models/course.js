@@ -9,7 +9,7 @@ const Courses = new Schema({
   img:{type:String,maxlength:255},
   videoid:{type:String},
   slug:{type:String,slug:"name"},
- 
+  MusicRole:{type:String},
 });
 
 const Course = mongoose.model('Course', Courses);

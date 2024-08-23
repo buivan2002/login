@@ -29,6 +29,6 @@ router.post('/store',isAdmin,courseControllers.store)
 router.get('/:id/edit',isAdmin,courseControllers.edit)
 router.put('/:id',isAdmin,courseControllers.update)
 router.delete('/:id',isAdmin,courseControllers.delete)
-router.get('/:slug',isAdmin,courseControllers.show)
+router.get('/:slug',courseControllers.show)
 
 module.exports = router;

@@ -21,9 +21,7 @@
 <script>
 {{#collections}}
   var currentUserRole = "{{role}}";
-{{/collections}}currentUserRole.onclick = function (musicRole){
-    
-}
+{{/collections}}
   function checkAccess(musicRole) {   
     if (musicRole === "vjp" && currentUserRole == "USER") {
       alert('Chỉ dành cho người dùng VJP'); 

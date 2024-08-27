@@ -31,7 +31,7 @@ class auth{
         const data = {
             username: req.body.username,
             password: req.body.password,
-            role: 'user'
+            role: 'USER'
         }
         const userExists = await collection.findOne({username: req.body.username}) 
         if (userExists){
@@ -45,6 +45,7 @@ class auth{
         data.password = hashedPassword 
         const userdata = await collection.insertMany(data)
         console.log(userdata)
+        return res.redirect('/login')
         }}
 
     async login_post (req, res) {
